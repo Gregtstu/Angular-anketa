@@ -1,0 +1,201 @@
+.anketa {
+  //padding: 87px 0 0 135px;
+  padding-left: 87px;
+  color: var(--text-main-color);
+  font-size: 17px;
+
+  &__title {
+    font-weight: 400;
+    font-size: 41px;
+    line-height: 53px;
+  }
+
+  &__form {
+    margin-top: 42px;
+    //max-width: 620px;
+    //max-height: 657px;
+
+    .form__part {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 17px;
+      margin-bottom: 15px;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 22px;
+
+      .input__name {
+        display: block;
+        width: 140px;
+      }
+
+      .input__text {
+        padding-left: 15px;
+        border: 1px solid var(--border-color);
+        width: 500px;
+        height: 44px;
+        font-size: 17px;
+      }
+
+      .input__number {
+        width: 50px;
+        height: 44px;
+        padding-left: 15px;
+        border: 1px solid var(--border-color);
+        font-size: 17px;
+      }
+
+      .input__btn {
+        display: flex;
+        flex-direction: column;
+
+        .input__btn-action {
+          width: 30px;
+          height: 22px;
+          border: none;
+          border-radius: 2px;
+          background-color: var(--btn-arrow-bg-color);
+          cursor: pointer;
+        }
+
+        .input__btn-action:active {
+          filter: brightness(50%);
+        }
+      }
+
+      .input__select {
+        width: 300px;
+        height: 44px;
+        border: 1px solid var(--border-color);
+        padding-left: 15px;
+        font-size: 17px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+      }
+
+      .input__select option {
+        cursor: pointer;
+        background-color: var(--hover-bg-color);
+      }
+
+      .input__btn-select {
+        position: absolute;
+        left: 400px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .input__btn-add {
+        width: 200px;
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background-color: transparent;
+        padding: 5px;
+        font-weight: 400;
+        font-size: 17px;
+        cursor: pointer;
+        border: none;
+
+
+        .input__btn-add-block {
+          display: block;
+        }
+
+      }
+
+      .input__information {
+        //margin-top: 9px;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 17px;
+        color: var(--text-inform-color);
+      }
+
+      .input__btn-delete {
+        margin-top: 10px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
+
+      .input__text-item {
+        width: 300px;
+        height: 44px;
+        margin-bottom: 15px;
+        padding-left: 15px;
+        border: 1px solid var(--border-color);
+        font-size: 17px;
+      }
+
+      .wrapper-check-box {
+        display: flex;
+        gap: 50px;
+
+        .check-box__item {
+          display: flex;
+          flex-direction: column;
+
+          span, input {
+            cursor: pointer;
+          }
+
+          .check-box{
+            width: 22px;
+            height: 22px;
+          }
+
+          span {
+            margin-left: 10px;
+            font-size: 17px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  .multy-input {
+    margin-top: 27px;
+    align-items: start;
+
+    .item-wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: start;
+
+    }
+  }
+}
+
+.form__submit-btn {
+  margin-left: 157px;
+  padding: 15px 30px;
+  background-color: var(--active-bg-color);
+  font-weight: 400;
+  font-size: 17px;
+  color: var(--text-main-color);
+  border: none;
+  cursor: pointer;
+}
+
+.form__submit-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+
+
+
+

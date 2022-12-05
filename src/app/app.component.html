@@ -1,0 +1,128 @@
+<section class="anketa">
+  <h1 class="anketa__title">Анкета</h1>
+  <form class="anketa__form form" [formGroup]="form" (submit)="subbmit()">
+    <div class="form__part input">
+      <label class="input__name">Имя</label>
+      <input class="input__text" type="text" formControlName="nameUser">
+    </div>
+    <div class="form__part input">
+      <label class="input__name">Возраст</label>
+      <input class="input__number"
+             type="number" formControlName="oldUser"
+             [(ngModel)]="oldValue">
+      <div class="input__btn">
+        <button class="input__btn-action" type="button" (click)="onIncriment()">
+          <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.07108 1.52101e-05L12.1421 7.07108H7.46149e-06L6.07108 1.52101e-05Z" fill="#9D9D9D"/>
+          </svg>
+        </button>
+        <hr>
+        <button class="input__btn-action" type="button" (click)="onDecriment()">
+          <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.07108 7.14214L12.1421 0.071068H7.46149e-06L6.07108 7.14214Z" fill="#9D9D9D"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="form__part input">
+      <label class="input__name">Семейное положение</label>
+      <select class="input__select" formControlName="familyUser">
+        <option value="Не женат / не замужем">Не женат / не замужем</option>
+        <option value="Женат / замужем">Женат / замужем</option>
+      </select>
+      <button class="input__btn-select" type="button">
+        <svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.1421 1.07107L8.07104 8.14214L0.999977 1.07107" stroke="black"/>
+        </svg>
+      </button>
+    </div>
+    <div class="form__part input multy-input">
+      <label class="input__name">ВУЗ</label>
+      <div class="wrapper" formGroupName="universaty">
+        <ul class="input__list" *ngFor="let control of getControls(); let idx = index">
+          <li class="input__item">
+            <input class="input__text-item" type="text" [formControlName]="idx">
+          </li>
+        </ul>
+        <div class="item-wrapper">
+          <div class="text-wrapper">
+            <input class="input__text-item"
+                   type="text"
+                   placeholder="Например, ВолгГУ"
+                   #universatyValue>
+            <p class="input__information">Укажите заведения, в которых вы учились.</p>
+          </div>
+          <button class="input__btn-delete" type="button" (click)="deleteUniversaty()">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="13" cy="13" r="13" fill="#FC6363"/>
+              <path d="M8.05029 17.9498L17.9498 8.05027" stroke="white"/>
+              <path d="M8.05029 8.05023L17.9498 17.9497" stroke="white"/>
+            </svg>
+          </button>
+          <button class="input__btn-add" type="button" (click)="addUniversaty(universatyValue)">
+        <span class="input__btn-add-block">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="13" cy="13" r="12.5" fill="white" stroke="black"/>
+            <path d="M6 13H20" stroke="black"/>
+            <path d="M13 6L13 20" stroke="black"/>
+          </svg>
+        </span>
+            <span class="input__btn-add-block">Добавить ещe</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="form__part input">
+      <label class="input__name">Место рождения</label>
+      <select class="input__select" formControlName="placeBornUser">
+        <option value="Не важно">Не важно</option>
+        <option value="Астрахань">Астрахань</option>
+        <option value="Волгоград">Волгоград</option>
+        <option value="Волжский">Волжский</option>
+        <option value="Ростов-на-Дону">Ростов-на-Дону</option>
+        <option value="Саратов">Саратов</option>
+        <option value="Элиста">Элиста</option>
+      </select>
+      <button class="input__btn-select" type="button">
+        <svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.1421 1.07107L8.07104 8.14214L0.999977 1.07107" stroke="black"/>
+        </svg>
+      </button>
+    </div>
+    <div class="form__part check-box multy-input" >
+      <label class="input__name">Навыки</label>
+      <div class="wrapper-check-box">
+        <ul class="check-box__item">
+          <li class="check-box__list"
+              *ngFor="let checkbox of checkArr1"
+          >
+            <label class="container" >
+              <input class="check-box"
+                     type="checkbox"
+                     (change)="checked(checkbox)"
+                     [checked]="allCheked"
+              >
+              <span class="description">{{checkbox.value}}</span>
+            </label>
+          </li>
+        </ul>
+        <ul class="check-box__item">
+          <li class="check-box__list"
+              *ngFor="let checkbox of checkArr2; let idx = index"
+          >
+            <label class="container"     >
+              <input class="check-box"
+                     type="checkbox"
+                     (change)="checked(checkbox)"
+                     [checked]="allCheked">
+              <span class="description"
+                    [ngStyle]="{fontWeight: (lastIndex == idx) ? 'bold' : 'normal'}"
+              >{{checkbox.value}}</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button class="form__submit-btn" type="submit" [disabled]="form.invalid">Отправить</button>
+  </form>
+</section>

@@ -12,10 +12,8 @@ export class AppComponent implements OnInit {
   public form!: FormGroup;
   public oldValue: number;
   public index: number;
-  public checkArr1: { cheked: boolean, value: string }[];
-  public checkArr2: { cheked: boolean, value: string }[];
+  public checkArr1: {id:number, cheked: boolean, value: string }[];
   public universatyArray: string[];
-  public lastIndex: number;
   public allCheked: boolean;
 
   constructor() {
@@ -23,21 +21,17 @@ export class AppComponent implements OnInit {
     this.universatyArray = [];
     this.allCheked = false;
     this.checkArr1 = [
-      {cheked: false, value: 'Общение'},
-      {cheked: false, value: 'Иностранные языки'},
-      {cheked: false, value: 'Бег с препятствиями'},
-      {cheked: false, value: 'Быстрое чтение'},
-      {cheked: false, value: 'Самозащита'},
+      {id:0, cheked: false, value: 'Общение'},
+      {id:1, cheked: false, value: 'Иностранные языки'},
+      {id:2, cheked: false, value: 'Бег с препятствиями'},
+      {id:3, cheked: false, value: 'Быстрое чтение'},
+      {id:4, cheked: false, value: 'Самозащита'},
+      {id:5, cheked: false, value: 'Вождение'},
+      {id:6, cheked: false, value: 'Программирование'},
+      {id:7, cheked: false, value: 'Управление вертолетом'},
+      {id:8, cheked: false, value: 'Оперное пении'},
+      {id:9, cheked: false, value: 'Выделить все'},
     ];
-    this.checkArr2 = [
-      {cheked: false, value: 'Вождение'},
-      {cheked: false, value: 'Программирование'},
-      {cheked: false, value: 'Управление вертолетом'},
-      {cheked: false, value: 'Оперное пении'},
-      {cheked: false, value: 'Выделить все'},
-    ];
-
-    this.lastIndex = this.checkArr2.length - 1;
     this.index = this.universatyArray.indexOf(this.universatyArray[this.universatyArray.length - 1]);
   }
 
@@ -81,17 +75,28 @@ export class AppComponent implements OnInit {
     if (this.form.valid) console.log(this.form.value);
   }
 
-  checked(checkbox: any) {
+  checked(checkbox: any, i:number) {
+    console.log(checkbox.cheked)
     if(checkbox.value == 'Выделить все' ){
       this.allCheked = true;
-      this.checkArr1.forEach(item => {
-        this.form.value.skillUser.push(item.value)
-      });
-      this.checkArr2.forEach(item => {
-        this.form.value.skillUser.push(item.value)
+      this.checkArr1.map(item => {
+        if (item.cheked == false){
+          item.cheked = true;
+        }
       });
     }
-    this.form.value.skillUser.push(checkbox.value)
+    if (!(checkbox.value == 'Выделить все') ){
+      this.checkArr1.map(item => {
+        if(item.cheked == false && i == item.id){
+          item.cheked = true;
+        }else {
+          item.cheked = false;
+
+        }
+      });
+    }
+    this.form.value.skillUser = this.checkArr1;
+
     console.log(this.form.value)
   }
 }

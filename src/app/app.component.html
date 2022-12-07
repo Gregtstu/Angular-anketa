@@ -94,12 +94,12 @@
       <div class="wrapper-check-box">
         <ul class="check-box__item">
           <li class="check-box__list"
-              *ngFor="let checkbox of checkArr1"
+              *ngFor="let checkbox of checkArr1; let idx = index"
           >
-            <label class="container" >
+            <label class="container" *ngIf="idx >= 0 && idx < 5">
               <input class="check-box"
                      type="checkbox"
-                     (change)="checked(checkbox)"
+                     (change)="checked(checkbox, idx)"
                      [checked]="allCheked"
               >
               <span class="description">{{checkbox.value}}</span>
@@ -108,15 +108,15 @@
         </ul>
         <ul class="check-box__item">
           <li class="check-box__list"
-              *ngFor="let checkbox of checkArr2; let idx = index"
+              *ngFor="let checkbox of checkArr1; let idx = index"
           >
-            <label class="container"     >
+            <label class="container"  *ngIf="idx > 4">
               <input class="check-box"
                      type="checkbox"
-                     (change)="checked(checkbox)"
+                     (change)="checked(checkbox, idx)"
                      [checked]="allCheked">
               <span class="description"
-                    [ngStyle]="{fontWeight: (lastIndex == idx) ? 'bold' : 'normal'}"
+                    [ngStyle]="{fontWeight: (idx == 9) ? 'bold' : 'normal'}"
               >{{checkbox.value}}</span>
             </label>
           </li>
